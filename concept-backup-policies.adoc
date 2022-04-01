@@ -1,0 +1,38 @@
+---
+sidebar: sidebar 
+permalink: concept-backup-policies.html 
+keywords: snapvault, archive, archiving, retention 
+summary: 与镜像策略不同，备份 SnapVault 策略会将特定的 Snapshot 副本复制到目标卷。如果要使用自己的策略而不是默认策略、了解备份策略的工作原理非常重要。 
+---
+= 了解复制策略
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+与镜像策略不同、备份（ SnapVault ）策略将特定的 Snapshot 副本复制到目标卷。如果要使用自己的策略而不是默认策略、了解备份策略的工作原理非常重要。
+
+
+
+== 了解 Snapshot 副本标签与备份策略之间的关系
+
+Snapshot 策略定义系统如何创建卷的 Snapshot 副本。该策略指定创建 Snapshot 副本的时间、要保留的副本数量以及如何对其进行标记。例如，系统可能每天在上午 12 点 10 分创建一个 Snapshot 副本、保留最近的两个副本并将其标记为“每日”。
+
+备份策略包括指定要复制到目标卷的标有 Snapshot 副本以及要保留的副本数量的规则。备份策略中定义的标签必须与快照策略中定义的一个或多个标签匹配。否则，系统将无法复制任何 Snapshot 副本。
+
+例如，包含标签“ daily ”和“ weekly ”的备份策略会导致复制仅包含这些标签的 Snapshot 副本。不会复制其他 Snapshot 副本，如下图所示：
+
+image:diagram_replication_snapvault_policy.png["此图显示了 Snapshot 策略，源卷，从 Snapshot 策略创建的 Snapshot 副本，然后根据备份策略将这些 Snapshot 副本复制到目标卷，该策略指定使用 \" 每日 \" 和 \" 每周 \" 标签复制 Snapshot 副本。"]
+
+
+
+== 默认策略和自定义策略
+
+默认 Snapshot 策略会创建每小时、每天和每周 Snapshot 副本、保留六个小时、每天两个和每周两个 Snapshot 副本。
+
+您可以轻松地将默认备份策略与默认快照策略一起使用。默认备份策略复制每日和每周 Snapshot 副本、保留每天七个 Snapshot 副本和每周 52 个 Snapshot 副本。
+
+如果创建自定义策略，则这些策略定义的标签必须匹配。您可以使用 System Manager 创建自定义策略。

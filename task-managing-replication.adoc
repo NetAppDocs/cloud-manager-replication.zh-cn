@@ -1,0 +1,70 @@
+---
+sidebar: sidebar 
+permalink: task-managing-replication.html 
+keywords: replication policy, policy, replication, replicating, snapmirror, snapvault, data replication, source, destination, schedule, relationship, break, resync, max transfer, maximum transfer rate, rate, transfer rate, reverse resync, status, replication status, disaster recovery, DR, archive, archiving, retention 
+summary: 在两个系统之间设置数据复制后、您可以从 Cloud Manager 管理数据复制计划和关系。 
+---
+= 管理计划和关系
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+在两个系统之间设置数据复制后、您可以从 Cloud Manager 管理数据复制计划和关系。
+
+.步骤
+. 单击 * 复制 * 。
+. 检查数据复制关系的状态以验证它们是否正常。
++
+
+NOTE: 如果关系的状态为空闲且镜像状态未初始化，则必须初始化目标系统的关系，以便根据定义的计划进行数据复制。您可以使用系统管理器或命令行界面（ CLI ）初始化关系。当目标系统发生故障后又重新联机时，可能会显示这些状态。
+
+. 单击卷关系的操作菜单，然后选择一个可用操作。
++
+image:screenshot_replication_managing.gif["屏幕抓图：显示 \" 复制状态 \" 页中可用操作的列表。"]
+
++
+下表介绍了可用的操作：
+
++
+[cols="15,85"]
+|===
+| Action | Description 
+
+
+| 信息 | 显示有关卷关系的详细信息：传输信息，上次传输信息，有关卷的详细信息以及有关分配给此关系的保护策略的信息。 
+
+
+| 中断 | 断开源卷和目标卷之间的关系、并激活目标卷以进行数据访问。当源卷由于数据损坏、意外删除或脱机状态等事件而无法提供数据时，通常会使用此选项。有关为数据访问配置目标卷以及重新激活源卷的信息，请参见 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-sm-ic-fr/home.html["《 ONTAP 9 卷灾难恢复快速指南》"^]。 
+
+
+| 重新同步  a| 
+重新建立卷之间断开的关系并根据定义的计划恢复数据复制。
+
+
+NOTE: 重新同步卷时、目标卷上的内容将被源卷上的内容覆盖。
+
+要执行反向重新同步，以便将数据从目标卷重新同步到源卷，请参见 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-sm-ic-fr/home.html["《 ONTAP 9 卷灾难恢复快速指南》"^]。
+
+
+
+| 反向重新同步 | 反转源卷和目标卷的角色。原始源卷中的内容将被目标卷的内容覆盖。当您要重新激活脱机的源卷时，这非常有用。在上次数据复制和源卷禁用之间写入到原始源卷的任何数据都不会保留。 
+
+
+| 编辑计划 | 允许您为数据复制选择不同的计划。 
+
+
+| 编辑最大传输速率 | 允许您编辑数据传输的最大速率（以千字节 / 秒为单位）。 
+
+
+| 更新 | 启动增量传输以更新目标卷。 
+
+
+| 删除 | 删除源卷和目标卷之间的数据保护关系，这意味着数据复制不再发生在卷之间。此操作不会激活目标卷以进行数据访问。如果系统之间没有其他数据保护关系，此操作还会删除集群对等关系和 Storage VM （ SVM ）对等关系。 
+|===
+
+
+选择操作后、 Cloud Manager 将更新关系或计划。

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blocks>
+  <block id="b2ff5c112923ab1a84f9024c034ae3c3" category="summary">您可以在 Cloud Manager 工作环境之间复制数据。您可以选择一次性数据复制将数据移入和移出云，也可以选择灾难恢复或长期保留的重复计划。</block>
+  <block id="87531525c3b816a3a29dbbcbcd9e58b1" category="doc">了解复制策略</block>
+  <block id="874fbc5828fab7b54057e8b64a511b45" category="paragraph">在 Cloud Manager 中设置数据复制时，您可能需要有关选择复制策略的帮助。复制策略定义存储系统如何将数据从源卷复制到目标卷。</block>
+  <block id="e40495076bb4b5e4783f1d1ee0ad0a16" category="section-title">复制策略的作用</block>
+  <block id="e19e3a549d24cbd0e2a4d7afde5135b9" category="paragraph">ONTAP 操作系统会自动创建称为 Snapshot 副本的备份。Snapshot 副本是卷的只读映像、可在某个时间点捕获文件系统的状态。</block>
+  <block id="651f76dd5d1cb2befad7f11fa1e9daaa" category="paragraph">在系统之间复制数据时、您会将 Snapshot 副本从源卷复制到目标卷。复制策略指定要从源卷复制到目标卷的快照副本。</block>
+  <block id="85fff253f12e639aac3437b2c24d5139" category="admonition">复制策略也称为 _protection_ 策略，因为它们由 SnapMirror 和 SnapVault 技术提供支持，这些技术可提供灾难恢复保护以及磁盘到磁盘备份和恢复。</block>
+  <block id="662a62e668373d0927ec7c1bfeb2b319" category="paragraph">下图显示了 Snapshot 副本和复制策略之间的关系：</block>
+  <block id="3802602e17f5cc165c7507f1c9a2e847" category="inline-image-macro">本插图显示了源卷上的 Snapshot 副本和一个复制策略、该策略指定将源卷中的所有或特定 Snapshot 副本复制到目标卷。</block>
+  <block id="81818114bafdd6d3c20723bfbb51f97c" category="paragraph"><block ref="81818114bafdd6d3c20723bfbb51f97c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0f237b0feffecdddaf6649c2d6d7809a" category="section-title">复制策略的类型</block>
+  <block id="ef8a1d695c35e57928d4b85c35185a8a" category="paragraph">复制策略有三种类型：</block>
+  <block id="b07d46952856e1f9bc81741e810a135d" category="list-text">_Mirror_ 策略会将新创建的 Snapshot 副本复制到目标卷。</block>
+  <block id="5ee26df8a5cbc26419cd11a2a77ad92d" category="paragraph">您可以使用这些 Snapshot 副本保护源卷、为灾难恢复或一次性数据复制做好准备。您可以随时激活目标卷以进行数据访问。</block>
+  <block id="9bca25bd28efdcfd3aebccab5c918fcb" category="list-text">_Backup_ 策略会将特定 Snapshot 副本复制到目标卷，并且这些副本的保留时间通常比源卷上的保留时间长。</block>
+  <block id="91934bdbfdc3c5214382994a56a46886" category="paragraph">您可以在数据损坏或丢失时从这些 Snapshot 副本中恢复数据、并保留这些数据以符合标准和其他与管理相关的目的。</block>
+  <block id="264d1d85979e565f376768c29ac5980a" category="list-text">_Mirror and Backup_ 策略可提供灾难恢复和长期保留。</block>
+  <block id="c5e319c770118f998f576ebb9b10069b" category="paragraph">每个系统都包括一个默认镜像和备份策略、它可以在许多情况下正常工作。如果您发现需要自定义策略、则可以使用 System Manager 创建自己的策略。</block>
+  <block id="d9ae190c29f834ec7084e50731eb8fea" category="paragraph">以下映像显示镜像策略和备份策略之间的区别。镜像策略镜像源卷上可用的 Snapshot 副本。</block>
+  <block id="5a7549c9e8b1c18d5706ec474c2a8ba4" category="inline-image-macro">此图显示了源卷和镜像源卷的镜像目标卷上的 Snapshot 副本。</block>
+  <block id="144abdc56cc3fbdbfae0ef89d327605b" category="paragraph"><block ref="144abdc56cc3fbdbfae0ef89d327605b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="35b902a7b4de8c8923d5c5b39b814e95" category="paragraph">备份策略通常保留 Snapshot 副本的时间比保留在源卷上的时间长：</block>
+  <block id="bf2150ef9467439727e9ba26af10d436" category="inline-image-macro">此图显示了源卷和备份目标卷上包含更多 Snapshot 副本的 Snapshot 副本，因为 SnapVault 会保留 Snapshot 副本以供长期保留。</block>
+  <block id="ad8bcd8268bd244944d22d0323e8d319" category="paragraph"><block ref="ad8bcd8268bd244944d22d0323e8d319" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="95c3127441b4989e3d78b50920629c66" category="summary">了解复制服务的新增功能。</block>
+  <block id="490414e0366b091220802d406e52c076" category="doc">新增功能</block>
+  <block id="3b7a1a77cdd08778e0827fbf312442b7" category="section-title">2021 年 9 月 2 日</block>
+  <block id="6c88f9e17d9019e00177d64f9db55d2e" category="section-title">支持适用于 ONTAP 的 Amazon FSX</block>
+  <block id="59dfc17500b1e0b8d1824eb8b1413080" category="paragraph">现在，您可以将数据从 Cloud Volumes ONTAP 系统或内部 ONTAP 集群复制到适用于 ONTAP 的 Amazon FSX 文件系统。</block>
+  <block id="5057fdb214d9f3773bc386ba2aa1fcb0" category="section-title">2021 年 5 月 5 日</block>
+  <block id="1473f0729c8bea54a5077a19ab764c47" category="section-title">界面经过重新设计</block>
+  <block id="5a0a1bceb9fa4494f5bd231c6eb87a5b" category="paragraph">我们重新设计了 " 复制 " 选项卡，以便于使用，并与 Cloud Manager 用户界面的当前外观相匹配。</block>
+  <block id="0f9405518138d20fd96d78fe19dabf84" category="inline-image-macro">Cloud Manager 中重新设计的复制选项卡的屏幕截图，其中显示了卷关系列表。</block>
+  <block id="ad0ba121971067cff2f6c3263f846473" category="paragraph"><block ref="ad0ba121971067cff2f6c3263f846473" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="958c15a697dc50afc44ab3fe2e061aec" category="summary">在两个系统之间设置数据复制后、您可以从 Cloud Manager 管理数据复制计划和关系。</block>
+  <block id="2e4ca84ff13f65389599985c5d2a9f08" category="doc">管理计划和关系</block>
+  <block id="f3a29486bed19a90f2da6d007818b427" category="list-title">步骤</block>
+  <block id="7a67cf78cd95f79c4c0a3698f1fc9113" category="list-text">单击 * 复制 * 。</block>
+  <block id="775f5846d28de12857c9c89ae5d4a6e1" category="list-text">检查数据复制关系的状态以验证它们是否正常。</block>
+  <block id="384cf3526eba01b7701f7fde08ba751e" category="admonition">如果关系的状态为空闲且镜像状态未初始化，则必须初始化目标系统的关系，以便根据定义的计划进行数据复制。您可以使用系统管理器或命令行界面（ CLI ）初始化关系。当目标系统发生故障后又重新联机时，可能会显示这些状态。</block>
+  <block id="4a4fc2634c97e1e3949084431ae3f4e1" category="list-text">单击卷关系的操作菜单，然后选择一个可用操作。</block>
+  <block id="2dc72a54b6e5367898238d6dcb40d246" category="inline-image-macro">屏幕抓图：显示 " 复制状态 " 页中可用操作的列表。</block>
+  <block id="594fdfa890e958e4ffa58557886eb75c" category="paragraph"><block ref="594fdfa890e958e4ffa58557886eb75c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7e237ab45b209987e5eb6464c44abac5" category="paragraph">下表介绍了可用的操作：</block>
+  <block id="004bf6c9a40003140292e97330236c53" category="cell">Action</block>
+  <block id="b5a7adde1af5c87d7fd797b6245c2a39" category="cell">Description</block>
+  <block id="a82be0f551b8708bc08eb33cd9ded0cf" category="cell">信息</block>
+  <block id="d94a71d39d4b5957a9cb08d7b25dc8d1" category="cell">显示有关卷关系的详细信息：传输信息，上次传输信息，有关卷的详细信息以及有关分配给此关系的保护策略的信息。</block>
+  <block id="e4c38d6d45baf080943d323dd51a2ce8" category="cell">中断</block>
+  <block id="3592520f476679c41ae085dbea13f855" category="inline-link">《 ONTAP 9 卷灾难恢复快速指南》</block>
+  <block id="f2bbb0bef78070a1fd8268d9772a2d0c" category="cell">断开源卷和目标卷之间的关系、并激活目标卷以进行数据访问。当源卷由于数据损坏、意外删除或脱机状态等事件而无法提供数据时，通常会使用此选项。有关为数据访问配置目标卷以及重新激活源卷的信息，请参见<block ref="af502c2f8fb660944e2ad52aad1efcc3" category="inline-link-rx"></block>。</block>
+  <block id="45ada1a8b02e7bf10200aedcf56d13c8" category="cell">重新同步</block>
+  <block id="d41d8cd98f00b204e9800998ecf8427e" category="doc"></block>
+  <block id="56f83d4dac34839a8f3a283bafd276e8" category="paragraph">重新建立卷之间断开的关系并根据定义的计划恢复数据复制。</block>
+  <block id="f43fdb6878de7980d30d532ea44e0baf" category="admonition">重新同步卷时、目标卷上的内容将被源卷上的内容覆盖。</block>
+  <block id="5209b5da9877de39bd3385b8056be084" category="paragraph">要执行反向重新同步，以便将数据从目标卷重新同步到源卷，请参见<block ref="af502c2f8fb660944e2ad52aad1efcc3" category="inline-link-rx"></block>。</block>
+  <block id="fb1729afce23e1bd1840f0ba32ef8e91" category="cell">反向重新同步</block>
+  <block id="fdd14ac0ba0eae4cebe22311577994f3" category="cell">反转源卷和目标卷的角色。原始源卷中的内容将被目标卷的内容覆盖。当您要重新激活脱机的源卷时，这非常有用。在上次数据复制和源卷禁用之间写入到原始源卷的任何数据都不会保留。</block>
+  <block id="67d85e3bd91876173776dc6f189ff7ac" category="cell">编辑计划</block>
+  <block id="6f95f7aca41a993373d4a1096d61c7f0" category="cell">允许您为数据复制选择不同的计划。</block>
+  <block id="369e2ad9fb57b7fa6aea36dd7e48cf58" category="cell">编辑最大传输速率</block>
+  <block id="35dbbeea8ab5e735a28c3b41ed25bca0" category="cell">允许您编辑数据传输的最大速率（以千字节 / 秒为单位）。</block>
+  <block id="06933067aafd48425d67bcb01bba5cb6" category="cell">更新</block>
+  <block id="16685aa35f9f2843a357407642b0d7d9" category="cell">启动增量传输以更新目标卷。</block>
+  <block id="f2a6c498fb90ee345d997f888fce3b18" category="cell">删除</block>
+  <block id="09cd2e52d52004647bc6c39549be0b94" category="cell">删除源卷和目标卷之间的数据保护关系，这意味着数据复制不再发生在卷之间。此操作不会激活目标卷以进行数据访问。如果系统之间没有其他数据保护关系，此操作还会删除集群对等关系和 Storage VM （ SVM ）对等关系。</block>
+  <block id="b4feae198be8f3f2843284b7b6d126a4" category="paragraph">选择操作后、 Cloud Manager 将更新关系或计划。</block>
+  <block id="ce21e7ae4271271294ccbf54c8fd6864" category="summary">NetApp 通过多种方式为 Cloud Manager 提供支持。全天候提供丰富的免费自助支持选项，例如知识库（ KB ）文章和社区论坛。您的支持注册包括通过 Web 服务单提供的远程技术支持。</block>
+  <block id="fabfc25ef8996fd90836e58a4c0b26b6" category="doc">获取帮助</block>
+  <block id="7ccaf84febc0ed633fbdbadb8d488a7e" category="paragraph"><block ref="7ccaf84febc0ed633fbdbadb8d488a7e" category="inline-link-macro-rx"></block></block>
+  <block id="f44753cd1ded9ad0818a4d62481460e9" category="summary">与镜像策略不同，备份 SnapVault 策略会将特定的 Snapshot 副本复制到目标卷。如果要使用自己的策略而不是默认策略、了解备份策略的工作原理非常重要。</block>
+  <block id="77ae0badcc9669dcf09b0b6ddb602a5a" category="paragraph">与镜像策略不同、备份（ SnapVault ）策略将特定的 Snapshot 副本复制到目标卷。如果要使用自己的策略而不是默认策略、了解备份策略的工作原理非常重要。</block>
+  <block id="5a987691c26800bb72299080978208d0" category="section-title">了解 Snapshot 副本标签与备份策略之间的关系</block>
+  <block id="84e1eb86d5601303f08cdde720ab00d5" category="paragraph">Snapshot 策略定义系统如何创建卷的 Snapshot 副本。该策略指定创建 Snapshot 副本的时间、要保留的副本数量以及如何对其进行标记。例如，系统可能每天在上午 12 点 10 分创建一个 Snapshot 副本、保留最近的两个副本并将其标记为“每日”。</block>
+  <block id="e80c18b83e4431b140cfd327235ef625" category="paragraph">备份策略包括指定要复制到目标卷的标有 Snapshot 副本以及要保留的副本数量的规则。备份策略中定义的标签必须与快照策略中定义的一个或多个标签匹配。否则，系统将无法复制任何 Snapshot 副本。</block>
+  <block id="ae8361f179144c2fabb67c8d6de83a5e" category="paragraph">例如，包含标签“ daily ”和“ weekly ”的备份策略会导致复制仅包含这些标签的 Snapshot 副本。不会复制其他 Snapshot 副本，如下图所示：</block>
+  <block id="9146f7d49f8f0b1c7684522621105c16" category="inline-image-macro">此图显示了 Snapshot 策略，源卷，从 Snapshot 策略创建的 Snapshot 副本，然后根据备份策略将这些 Snapshot 副本复制到目标卷，该策略指定使用 " 每日 " 和 " 每周 " 标签复制 Snapshot 副本。</block>
+  <block id="917f71613f685fca1f5480f2402e4328" category="paragraph"><block ref="917f71613f685fca1f5480f2402e4328" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="078de5bc4b102703fbb5d5f16eab4ac5" category="section-title">默认策略和自定义策略</block>
+  <block id="82a50f0f6176439f52db3f00249bb062" category="paragraph">默认 Snapshot 策略会创建每小时、每天和每周 Snapshot 副本、保留六个小时、每天两个和每周两个 Snapshot 副本。</block>
+  <block id="ffd11b2f9d7cbf737e9c7fb470bccfa5" category="paragraph">您可以轻松地将默认备份策略与默认快照策略一起使用。默认备份策略复制每日和每周 Snapshot 副本、保留每天七个 Snapshot 副本和每周 52 个 Snapshot 副本。</block>
+  <block id="148658bf400475bd13a5edab6c870d2f" category="paragraph">如果创建自定义策略，则这些策略定义的标签必须匹配。您可以使用 System Manager 创建自定义策略。</block>
+  <block id="30d965eef5ba25c6b9998ae38270b43e" category="doc">法律声明</block>
+  <block id="c59ae8d7beeb519a23478ab048af482c" category="paragraph"><block ref="c59ae8d7beeb519a23478ab048af482c" category="inline-link-macro-rx"></block></block>
+  <block id="6f2ac1cf1da8ec34232c651d4bba0149" category="paragraph"><block ref="6f2ac1cf1da8ec34232c651d4bba0149" category="inline-link-macro-rx"></block></block>
+  <block id="4940124e8487cb4ea36f1511a195cf66" category="inline-link-macro">有关 Cloud Manager 3.9 的注意事项</block>
+  <block id="c069fcc68c5dfa73ccc99924c836cae9" category="paragraph"><block ref="c069fcc68c5dfa73ccc99924c836cae9" category="inline-link-macro-rx"></block></block>
+  <block id="aa03d16eacb954c7af08d5001cd67507" category="doc">设置数据复制</block>
+  <block id="745cc81e54713a1702ada65f4b222bce" category="paragraph">您可以通过选择一次性数据复制进行数据传输，或者选择灾难恢复或长期保留的重复计划，在 ONTAP 工作环境之间复制数据。例如，您可以设置从内部 ONTAP 系统到 Cloud Volumes ONTAP 的数据复制，以便进行灾难恢复。</block>
+  <block id="992753e7f234853a9e0f96d1ff637271" category="section-title">数据复制要求</block>
+  <block id="3f5c98f2da3fd65fbbfa955b13a433ab" category="paragraph">在复制数据之前，您应确认满足 Cloud Volumes ONTAP ，内部 ONTAP 集群或适用于 ONTAP 的 Amazon FSx 的特定要求。</block>
+  <block id="8e7eaac4ef6ddba0d9f93228ce3ac6e7" category="list-text">工作环境</block>
+  <block id="4afa74830ae584f2b792dfe5b6c79ccc" category="list-text">如果您尚未创建，则需要在数据复制关系中为源和目标创建工作环境。</block>
+  <block id="64c9a9d3cd7c3ca76cf19b78a96c9b79" category="inline-link">创建适用于 ONTAP 的 Amazon FSX 工作环境</block>
+  <block id="f903e0b8e0f1e5d10c61be1c83633ca0" category="list-text"><block ref="f903e0b8e0f1e5d10c61be1c83633ca0" category="inline-link-rx"></block></block>
+  <block id="a3272fd5c4bd1903de9b1b2f5e1665a8" category="inline-link">在 AWS 中监控 Cloud Volumes ONTAP</block>
+  <block id="5fc68dd6c2f9e8f9867008288922972c" category="list-text"><block ref="5fc68dd6c2f9e8f9867008288922972c" category="inline-link-rx"></block></block>
+  <block id="70c84621a7336f391b4b7df86b5f1396" category="inline-link">在 Azure 中启动 Cloud Volumes ONTAP</block>
+  <block id="382c836de95fd7a0d956bd916d408106" category="list-text"><block ref="382c836de95fd7a0d956bd916d408106" category="inline-link-rx"></block></block>
+  <block id="ce3503849689227dd8014f8ed3f5cb5e" category="inline-link">在 GCP 中启动 Cloud Volumes ONTAP</block>
+  <block id="b1fc335b745b5be1ddedded19d077bf9" category="list-text"><block ref="b1fc335b745b5be1ddedded19d077bf9" category="inline-link-rx"></block></block>
+  <block id="6c0fb6078ec778ca2319e375a19e994b" category="inline-link">添加现有 Cloud Volumes ONTAP 系统</block>
+  <block id="c10b8a77856c1097f8b3038f1bfab45b" category="list-text"><block ref="c10b8a77856c1097f8b3038f1bfab45b" category="inline-link-rx"></block></block>
+  <block id="a1ebf612d281c8e7fb16bbfa253b9627" category="inline-link">发现 ONTAP 集群</block>
+  <block id="49aaf65c31a811a37b2627a951f6f6d2" category="list-text"><block ref="49aaf65c31a811a37b2627a951f6f6d2" category="inline-link-rx"></block></block>
+  <block id="3fbe74eae84714fcfdd21edafe54f77f" category="list-text">版本要求</block>
+  <block id="9739187f50db857f27b204b12e6d365e" category="inline-link">数据保护高级指南</block>
+  <block id="45a002d1b0a2d3b7484b80cb82cbae5f" category="list-text">在复制数据之前，您应该验证源卷和目标卷是否运行兼容的 ONTAP 版本。有关详细信息，请参见<block ref="45ba42574012af0d87ad3af840143483" category="inline-link-rx"></block>。</block>
+  <block id="fe6efbb95f9a85a506ca5269c7f8ff90" category="list-text">特定于 Cloud Volumes ONTAP 的要求</block>
+  <block id="889d45df47a3ead91725048aa6da9442" category="list-text">实例的安全组必须包含所需的入站和出站规则：具体来说，是 ICMP 以及端口 11104 和 11105 的规则。</block>
+  <block id="56a907169092bf547ac6f962beae2e1a" category="paragraph">这些规则包括在预定义的安全组中。</block>
+  <block id="c08b01fe5c09939cdbabcb370734dad8" category="list-text">要在不同子网的两个 Cloud Volumes ONTAP 系统之间复制数据、必须将子网路由在一起（这是默认设置）。</block>
+  <block id="d5c8c6b85589a3255105df8b8a5a8e77" category="list-text">要在不同云提供商中的两个 Cloud Volumes ONTAP 系统之间复制数据，您必须在虚拟网络之间建立 VPN 连接。</block>
+  <block id="4f98fe32c8059fcb89742310b7175e7f" category="list-text">特定于 ONTAP 集群的要求</block>
+  <block id="8c4a805dde66a7461e7760fe982d066f" category="list-text">必须安装活动 SnapMirror 许可证。</block>
+  <block id="e133ed2609aff998f4ad7507f5e823eb" category="list-text">如果集群位于您的内部环境中，则您应从企业网络连接到 AWS ， Azure 或 GCP 中的虚拟网络。这通常是一个 VPN 连接。</block>
+  <block id="1fbce003d68708feb24931b9e6366f50" category="list-text">ONTAP 集群必须满足其他子网、端口、防火墙和集群要求。</block>
+  <block id="88c6c83b92078bff672007a244edf6fe" category="inline-link">《集群和 SVM 对等快速指南》</block>
+  <block id="eee57d9d3eea15be2047876cf152e294" category="paragraph">有关详细信息，请参见<block ref="7a715a3c6763f11dce8d04ecae2e7135" category="inline-link-rx"></block>。</block>
+  <block id="4f473a2a941d4fd7b4a68e3cd98e934c" category="list-text">Amazon FSX for ONTAP 的特定要求</block>
+  <block id="e895824a462fdee602e050151c64f0a6" category="list-text">数据复制关系中的目标必须是适用于 ONTAP 的 Amazon FSX 工作环境。</block>
+  <block id="7002d9ba5a8e7d19055405e260941870" category="paragraph">源可以是 Cloud Volumes ONTAP 或内部 ONTAP 集群。</block>
+  <block id="fec5e9f11ead982ba633a364695b9cff" category="list-text">如果 Cloud Volumes ONTAP 是源，请通过启用 VPC 对等或使用传输网关来确保 VPC 之间的连接。</block>
+  <block id="4bf49185216f4e917fd8dcc50ee1ff2c" category="list-text">如果内部 ONTAP 集群是源，请使用直接连接或 VPN 连接确保内部网络与 AWS VPC 之间的连接。</block>
+  <block id="58e046b3f4ec304e4456cda8151a574b" category="section-title">Replicate data between systems</block>
+  <block id="ab180709f75f8b8d74709444b839ccd3" category="paragraph">您可以通过选择一次性数据复制（有助于将数据移入和移出云）或重复计划（有助于灾难恢复或长期保留）来复制数据。</block>
+  <block id="29e71d65fc647320e822efb6ec422c56" category="list-text">在 " 画布 " 页面上，选择包含源卷的工作环境，然后将其拖动到要将该卷复制到的工作环境。</block>
+  <block id="f058b2239a935219edfc3818d7b5cb9e" category="inline-image-macro">屏幕抓图：显示一个工作环境位于另一个工作环境之上以启动数据复制过程。</block>
+  <block id="f0fb2fde0c29810d08233a36012cb972" category="paragraph"><block ref="f0fb2fde0c29810d08233a36012cb972" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="362a388c30edcb2f99cceb3fe86d98c1" category="list-text">* 源和目标对等设置 * ：如果显示此页面，请为集群对等关系选择所有集群间 LIF 。</block>
+  <block id="bea31cd643e991ddda33528781bb08e5" category="paragraph">应配置集群间网络，使集群对等方具有 _ 成对的全网状连接 _ ，这意味着集群对等关系中的每个集群对都在其所有集群间 LIF 之间建立连接。</block>
+  <block id="2de4794fb8257073e92d6ea494fd0157" category="paragraph">如果具有多个 LIF 的 ONTAP 集群是源或目标，则会显示这些页面。</block>
+  <block id="a6e88d0494a8fa6f3ae3b6727b0d269a" category="list-text">* 源卷选择 * ：选择要复制的卷。</block>
+  <block id="36e07509be5c7f032ab917fdca1c3155" category="list-text">* 目标磁盘类型和分层 * ：如果目标是 Cloud Volumes ONTAP 系统，请选择目标磁盘类型并选择是否要启用数据分层。</block>
+  <block id="fffe1c574a9d13338bd57b8f437e8b38" category="list-text">* 目标卷名称 * ：指定目标卷名称并选择目标聚合。</block>
+  <block id="a72bddbb2c5ec4276f61eb5d4c72d29e" category="paragraph">如果目标是 ONTAP 集群，则还必须指定目标 Storage VM 。</block>
+  <block id="70b03b0b5fddb323cd5727f0aff116da" category="list-text">* 最大传输速率 * ：指定可传输数据的最大速率（以 MB/ 秒为单位）。</block>
+  <block id="c4d4c57bab69ea2730de16df7ca7f541" category="paragraph">您应限制传输速率。无限速率可能会对其他应用程序的性能产生负面影响，并可能影响您的 Internet 性能。</block>
+  <block id="dc7023569df1ae3b00637768e0eda066" category="list-text">* 复制策略 * ：选择一个默认策略或单击 * 其他策略 * ，然后选择一个高级策略。</block>
+  <block id="43b69288e2e4056e2603dc7b20958252" category="inline-link-macro">了解复制策略</block>
+  <block id="38ae0f8e71302f90ed2bd78cc3558be1" category="paragraph">如需帮助， <block ref="aa986145ecc84d384c81421dbd7256f8" category="inline-link-macro-rx"></block>。</block>
+  <block id="94b8e29e9b4ae2edec5679fafc448461" category="inline-link-macro">了解备份策略的工作原理</block>
+  <block id="07c79d9eb85b0d23c55a7b9b67cf02d8" category="paragraph">如果选择自定义备份（ SnapVault ）策略、与策略关联的标签必须与源卷上 Snapshot 副本的标签匹配。有关详细信息 ... <block ref="75de9650bf9d481877dc0d18e86ffa75" category="inline-link-macro-rx"></block>。</block>
+  <block id="d3b2b050bb9494cae757b48c9e54e869" category="list-text">* 计划 * ：选择一次性副本或重复计划。</block>
+  <block id="eab21f14d3f6250b2de779be87b8404e" category="paragraph">有多个默认计划可用。如果您需要其他计划，则必须使用 System Manager 在 _destination_cluster 上创建一个新计划。</block>
+  <block id="b651c9a4bed137033ce440a73927ffcf" category="list-text">* 查看 * ：查看您选择的内容并单击 * 执行 * 。</block>
+  <block id="eed124d262a3b5245da6792903502a1f" category="paragraph">Cloud Manager 将启动数据复制过程。您可以在复制服务中查看有关卷关系的详细信息。</block>
+  <block id="aeeec0576922eb4490b5fabadc6c4e36" category="summary">NetApp SnapMirror 可通过 LAN 或 WAN 高速复制数据，从而在虚拟和传统环境中实现高数据可用性和快速数据复制。在将数据复制到 NetApp 存储系统并持续更新二级数据时，您的数据将保持最新，并在需要时保持可用。不需要外部复制服务器。</block>
+  <block id="e60519215887d589e148f68a2f5d2a06" category="doc">了解复制服务</block>
+  <block id="98f770b0af18ca763421bac22b4b6805" category="section-title">功能</block>
+  <block id="4d8208136280cbaba3cab05e5996a3a8" category="list-text">在 ONTAP 存储系统之间复制数据，以支持将数据备份和灾难恢复到云或云之间。</block>
+  <block id="58598c037819ab3e58b8ee6d0d634246" category="list-text">确保灾难恢复环境的可靠性和高可用性。</block>
+  <block id="6c12db213eb53a8ef7d470254e0395be" category="list-text">ONTAP 存储之间的高效块级复制速度快，效率高，灾难恢复和备份都有精细的恢复点。</block>
+  <block id="20b4f77bd00b4f63a49ec8e08f3bf6a6" category="section-title">成本</block>
+  <block id="51d8157d48cfe9c64b3f0f386d2e4e7b" category="paragraph">NetApp 不会因使用复制服务而向您收取费用，但您需要向云提供商咨询适用的数据传入和传出费用。</block>
+  <block id="744db3ac634a7aa94269971ca3dc965e" category="section-title">支持的工作环境</block>
+  <block id="33a6dd69443b97d9eae9c88809da5d88" category="paragraph">Cloud Manager 支持在以下类型的工作环境之间进行数据复制：</block>
+  <block id="9fd9b4e1af5d0e8b46abbd52a5c740cd" category="cell">源工作环境</block>
+  <block id="e4543e565352b9e4f4e71c2f648026f6" category="cell">支持的目标工作环境</block>
+  <block id="117bdbda976fe8b3212bc3b6327a0a1b" category="cell">Cloud Volumes ONTAP</block>
+  <block id="18cf072964a583150dd247485ba75b92" category="list-text">适用于 ONTAP 的 Amazon FSX</block>
+  <block id="c17ce6a7cdcb97581c6d5603ec7d447a" category="list-text">内部 ONTAP 集群</block>
+  <block id="b553c40a28c07760917a84d00649f7fd" category="section-title">数据复制的工作原理</block>
+  <block id="e445c14748daf3ca002770b51d99fc5e" category="paragraph">Cloud Manager 使用 SnapMirror 和 SnapVault 技术简化了不同 ONTAP 系统上卷之间的数据复制。您只需标识源卷和目标卷、然后选择复制策略和计划即可。</block>
+  <block id="cac80a54492c3c29d5dde82753de238c" category="paragraph">对于 Cloud Volumes ONTAP ， Cloud Manager 会购买所需磁盘，配置关系，应用复制策略，然后在卷之间启动基线传输。</block>
+  <block id="f2c34e95577ee850c803e71a908cf1ef" category="admonition">基线传输包括源数据的完整副本。后续传输包含源数据的差异副本。</block>
+  <block id="cc20b848be9552c96e9f46ed40db533d" category="section-title">支持的数据保护配置</block>
+  <block id="6d6b0ddfbb8cf202faee1b560ec76688" category="paragraph">Cloud Manager 支持简单、扇出和级联数据保护配置：</block>
+  <block id="c1400343880c81f40f5a3faf804c86ae" category="list-text">在简单的配置中、从卷 A 复制到卷 B</block>
+  <block id="efec681cbb459f433d2291a71e215461" category="list-text">在扇出配置中、从卷 A 复制到多个目标。</block>
+  <block id="7a850141034065e0218996db71a2ef0c" category="list-text">在级联配置中、从卷 A 复制到卷 B 、从卷 B 复制到卷 C</block>
+  <block id="dc699e704dec5502b9aa219f9381ad94" category="doc">复制文档</block>
+  <block id="3c10116b37b407ac79092a38ffb292e4" category="summary">在向 NetApp 技术支持创建支持案例之前，您需要先将 NetApp 支持站点帐户添加到 Cloud Manager 中，然后注册获取支持。</block>
+  <block id="42748df9eaa0be17ddc5cc1593cf57ab" category="doc">注册以获得支持</block>
+  <block id="d53e2559d6ace0e907fc57192bf286b6" category="paragraph"><block ref="d53e2559d6ace0e907fc57192bf286b6" category="inline-link-macro-rx"></block></block>
+  <block id="7ff191df90fac0fa94ab5c2b5101a5e9" category="sidebar">所有 Cloud Manager 文档</block>
+  <block id="7596270426e8c5f92be308ff330e0e64" category="sidebar">复制文档</block>
+  <block id="7d0ee6fed10d3d4e5c9ee496729ab519" category="sidebar">发行说明</block>
+  <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">入门</block>
+  <block id="c27a58445f6be9881526a37e46bb7d26" category="sidebar">管理数据复制</block>
+  <block id="0460583622f03a52d7693094d6fa2452" category="sidebar">概念</block>
+  <block id="fa26829830efe73376071e3b30f66d6a" category="sidebar">复制策略</block>
+  <block id="9f02509e5496e861df4c341dba05386e" category="sidebar">备份策略</block>
+  <block id="0adc03eac86772ad2c75c8f140be417e" category="sidebar">知识和支持</block>
+  <block id="96dbe21e840f318daaf871cafa9f1d1f" category="sidebar">使用复制服务</block>
+  <block id="813011e2103649bb71f124adedcc10ea" category="sidebar">博客社区</block>
+  <block id="dd490b81914dd945601e442a41cb4222" category="sidebar">NetApp 社区</block>
+  <block id="ff6c37cbc252e306a6b4e390ec13cbc1" category="sidebar">Cloud Central 博客</block>
+  <block id="ad203e818e0c9d7f42f1c260b33875f3" category="sidebar">云网络研讨会</block>
+</blocks>

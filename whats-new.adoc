@@ -1,0 +1,38 @@
+---
+sidebar: sidebar 
+permalink: whats-new.html 
+keywords: 'what"s new, features, new, release notes, bugs, limitations, known issues, enhancements, fixes' 
+summary: 了解复制服务的新增功能。 
+---
+= 新增功能
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+了解复制服务的新增功能。
+
+
+
+== 2021 年 9 月 2 日
+
+
+
+=== 支持适用于 ONTAP 的 Amazon FSX
+
+现在，您可以将数据从 Cloud Volumes ONTAP 系统或内部 ONTAP 集群复制到适用于 ONTAP 的 Amazon FSX 文件系统。
+
+
+
+== 2021 年 5 月 5 日
+
+
+
+=== 界面经过重新设计
+
+我们重新设计了 " 复制 " 选项卡，以便于使用，并与 Cloud Manager 用户界面的当前外观相匹配。
+
+image:replication.gif["Cloud Manager 中重新设计的复制选项卡的屏幕截图，其中显示了卷关系列表。"]

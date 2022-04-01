@@ -1,0 +1,79 @@
+---
+sidebar: sidebar 
+permalink: concept-replication.html 
+keywords: ontap, cluster, discover, manage, cloud manager, hybrid cloud, replication policy, policy, replication, replicating, snapmirror, snapvault, data replication, fanout, cascade, source, destination, disaster recovery, DR, archive, archiving, retention 
+summary: NetApp SnapMirror 可通过 LAN 或 WAN 高速复制数据，从而在虚拟和传统环境中实现高数据可用性和快速数据复制。在将数据复制到 NetApp 存储系统并持续更新二级数据时，您的数据将保持最新，并在需要时保持可用。不需要外部复制服务器。 
+---
+= 了解复制服务
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetApp SnapMirror 可通过 LAN 或 WAN 高速复制数据，从而在虚拟和传统环境中实现高数据可用性和快速数据复制。在将数据复制到 NetApp 存储系统并持续更新二级数据时，您的数据将保持最新，并在需要时保持可用。不需要外部复制服务器。
+
+
+
+== 功能
+
+* 在 ONTAP 存储系统之间复制数据，以支持将数据备份和灾难恢复到云或云之间。
+* 确保灾难恢复环境的可靠性和高可用性。
+* ONTAP 存储之间的高效块级复制速度快，效率高，灾难恢复和备份都有精细的恢复点。
+
+
+
+
+== 成本
+
+NetApp 不会因使用复制服务而向您收取费用，但您需要向云提供商咨询适用的数据传入和传出费用。
+
+
+
+== 支持的工作环境
+
+Cloud Manager 支持在以下类型的工作环境之间进行数据复制：
+
+[cols="30,30"]
+|===
+| 源工作环境 | 支持的目标工作环境 
+
+
+| Cloud Volumes ONTAP  a| 
+* 适用于 ONTAP 的 Amazon FSX
+* Cloud Volumes ONTAP
+* 内部 ONTAP 集群
+
+
+
+
+| 内部 ONTAP 集群  a| 
+* 适用于 ONTAP 的 Amazon FSX
+* Cloud Volumes ONTAP
+* 内部 ONTAP 集群
+
+
+|===
+
+
+== 数据复制的工作原理
+
+Cloud Manager 使用 SnapMirror 和 SnapVault 技术简化了不同 ONTAP 系统上卷之间的数据复制。您只需标识源卷和目标卷、然后选择复制策略和计划即可。
+
+对于 Cloud Volumes ONTAP ， Cloud Manager 会购买所需磁盘，配置关系，应用复制策略，然后在卷之间启动基线传输。
+
+
+NOTE: 基线传输包括源数据的完整副本。后续传输包含源数据的差异副本。
+
+
+
+== 支持的数据保护配置
+
+Cloud Manager 支持简单、扇出和级联数据保护配置：
+
+* 在简单的配置中、从卷 A 复制到卷 B
+* 在扇出配置中、从卷 A 复制到多个目标。
+* 在级联配置中、从卷 A 复制到卷 B 、从卷 B 复制到卷 C
+

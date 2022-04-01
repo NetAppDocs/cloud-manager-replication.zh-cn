@@ -1,0 +1,59 @@
+---
+sidebar: sidebar 
+permalink: concept-replication-policies.html 
+keywords: replication policy, policy, replication, replicating, snapmirror, snapvault, data replication, disaster recovery, DR 
+summary: 您可以在 Cloud Manager 工作环境之间复制数据。您可以选择一次性数据复制将数据移入和移出云，也可以选择灾难恢复或长期保留的重复计划。 
+---
+= 了解复制策略
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+在 Cloud Manager 中设置数据复制时，您可能需要有关选择复制策略的帮助。复制策略定义存储系统如何将数据从源卷复制到目标卷。
+
+
+
+== 复制策略的作用
+
+ONTAP 操作系统会自动创建称为 Snapshot 副本的备份。Snapshot 副本是卷的只读映像、可在某个时间点捕获文件系统的状态。
+
+在系统之间复制数据时、您会将 Snapshot 副本从源卷复制到目标卷。复制策略指定要从源卷复制到目标卷的快照副本。
+
+
+TIP: 复制策略也称为 _protection_ 策略，因为它们由 SnapMirror 和 SnapVault 技术提供支持，这些技术可提供灾难恢复保护以及磁盘到磁盘备份和恢复。
+
+下图显示了 Snapshot 副本和复制策略之间的关系：
+
+image:diagram_replication_policies.png["本插图显示了源卷上的 Snapshot 副本和一个复制策略、该策略指定将源卷中的所有或特定 Snapshot 副本复制到目标卷。"]
+
+
+
+== 复制策略的类型
+
+复制策略有三种类型：
+
+* _Mirror_ 策略会将新创建的 Snapshot 副本复制到目标卷。
++
+您可以使用这些 Snapshot 副本保护源卷、为灾难恢复或一次性数据复制做好准备。您可以随时激活目标卷以进行数据访问。
+
+* _Backup_ 策略会将特定 Snapshot 副本复制到目标卷，并且这些副本的保留时间通常比源卷上的保留时间长。
++
+您可以在数据损坏或丢失时从这些 Snapshot 副本中恢复数据、并保留这些数据以符合标准和其他与管理相关的目的。
+
+* _Mirror and Backup_ 策略可提供灾难恢复和长期保留。
++
+每个系统都包括一个默认镜像和备份策略、它可以在许多情况下正常工作。如果您发现需要自定义策略、则可以使用 System Manager 创建自己的策略。
+
+
+
+以下映像显示镜像策略和备份策略之间的区别。镜像策略镜像源卷上可用的 Snapshot 副本。
+
+image:diagram_replication_snapmirror.png["此图显示了源卷和镜像源卷的镜像目标卷上的 Snapshot 副本。"]
+
+备份策略通常保留 Snapshot 副本的时间比保留在源卷上的时间长：
+
+image:diagram_replication_snapvault.png["此图显示了源卷和备份目标卷上包含更多 Snapshot 副本的 Snapshot 副本，因为 SnapVault 会保留 Snapshot 副本以供长期保留。"]
