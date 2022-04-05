@@ -38,7 +38,7 @@ image:screenshot_replication_managing.gif["屏幕抓图：显示 \" 复制状态
 | 信息 | 显示有关卷关系的详细信息：传输信息，上次传输信息，有关卷的详细信息以及有关分配给此关系的保护策略的信息。 
 
 
-| 中断 | 断开源卷和目标卷之间的关系、并激活目标卷以进行数据访问。当源卷由于数据损坏、意外删除或脱机状态等事件而无法提供数据时，通常会使用此选项。有关为数据访问配置目标卷以及重新激活源卷的信息，请参见 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-sm-ic-fr/home.html["《 ONTAP 9 卷灾难恢复快速指南》"^]。 
+| 中断 | 断开源卷和目标卷之间的关系、并激活目标卷以进行数据访问。当源卷由于数据损坏、意外删除或脱机状态等事件而无法提供数据时，通常会使用此选项。https://docs.netapp.com/us-en/ontap-sm-classic/volume-disaster-recovery/index.html["了解如何在 ONTAP 文档中配置用于数据访问的目标卷以及如何重新激活源卷"^] 
 
 
 | 重新同步  a| 
@@ -47,7 +47,7 @@ image:screenshot_replication_managing.gif["屏幕抓图：显示 \" 复制状态
 
 NOTE: 重新同步卷时、目标卷上的内容将被源卷上的内容覆盖。
 
-要执行反向重新同步，以便将数据从目标卷重新同步到源卷，请参见 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-sm-ic-fr/home.html["《 ONTAP 9 卷灾难恢复快速指南》"^]。
+了解如何执行反向重新同步，以便将数据从目标卷重新同步到源卷，请转到 https://docs.netapp.com/us-en/ontap-sm-classic/volume-disaster-recovery/index.html["ONTAP 文档"^]。
 
 
 

@@ -24,7 +24,7 @@ summary: 您可以在 Cloud Manager 工作环境之间复制数据。您可以�
 工作环境:: 如果您尚未创建，则需要在数据复制关系中为源和目标创建工作环境。
 +
 --
-* https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/task-creating-fsx-working-environment.html["创建适用于 ONTAP 的 Amazon FSX 工作环境"^]
+* https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/start/task-getting-started-fsx.html["创建适用于 ONTAP 的 Amazon FSX 工作环境"^]
 * https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-aws.html["在 AWS 中监控 Cloud Volumes ONTAP"^]
 * https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-azure.html["在 Azure 中启动 Cloud Volumes ONTAP"^]
 * https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-gcp.html["在 GCP 中启动 Cloud Volumes ONTAP"^]
@@ -33,7 +33,12 @@ summary: 您可以在 Cloud Manager 工作环境之间复制数据。您可以�
 
 
 --
-版本要求:: 在复制数据之前，您应该验证源卷和目标卷是否运行兼容的 ONTAP 版本。有关详细信息，请参见 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-dap/GUID-0810D764-4CEA-4683-8280-032433B1886B.html["数据保护高级指南"^]。
+版本要求:: 在复制数据之前，您应该验证源卷和目标卷是否运行兼容的 ONTAP 版本。
++
+--
+https://docs.netapp.com/us-en/ontap/data-protection/compatible-ontap-versions-snapmirror-concept.html["查看 SnapMirror 关系的兼容 ONTAP 版本"^]
+
+--
 特定于 Cloud Volumes ONTAP 的要求::
 +
 --
@@ -53,7 +58,7 @@ summary: 您可以在 Cloud Manager 工作环境之间复制数据。您可以�
 * 如果集群位于您的内部环境中，则您应从企业网络连接到 AWS ， Azure 或 GCP 中的虚拟网络。这通常是一个 VPN 连接。
 * ONTAP 集群必须满足其他子网、端口、防火墙和集群要求。
 +
-有关详细信息，请参见 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-clus-peer/home.html["《集群和 SVM 对等快速指南》"^]。
+https://docs.netapp.com/us-en/ontap-sm-classic/peering/reference_prerequisites_for_cluster_peering.html["在 ONTAP 文档中查看集群对等的前提条件"^]
 
 
 
@@ -105,7 +110,7 @@ image:screenshot_drag_and_drop.gif["屏幕抓图：显示一个工作环境位�
 如需帮助， link:concept-replication-policies.html["了解复制策略"]。
 
 +
-如果选择自定义备份（ SnapVault ）策略、与策略关联的标签必须与源卷上 Snapshot 副本的标签匹配。有关详细信息 ... link:concept-replication-policies.html#how-backup-policies-work["了解备份策略的工作原理"]。
+如果选择自定义备份（ SnapVault ）策略、与策略关联的标签必须与源卷上 Snapshot 副本的标签匹配。有关详细信息 ... link:concept-backup-policies.html["了解备份策略的工作原理"]。
 
 . * 计划 * ：选择一次性副本或重复计划。
 +

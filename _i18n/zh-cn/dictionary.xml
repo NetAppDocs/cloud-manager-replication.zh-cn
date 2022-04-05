@@ -47,13 +47,10 @@
   <block id="a82be0f551b8708bc08eb33cd9ded0cf" category="cell">信息</block>
   <block id="d94a71d39d4b5957a9cb08d7b25dc8d1" category="cell">显示有关卷关系的详细信息：传输信息，上次传输信息，有关卷的详细信息以及有关分配给此关系的保护策略的信息。</block>
   <block id="e4c38d6d45baf080943d323dd51a2ce8" category="cell">中断</block>
-  <block id="3592520f476679c41ae085dbea13f855" category="inline-link">《 ONTAP 9 卷灾难恢复快速指南》</block>
-  <block id="f2bbb0bef78070a1fd8268d9772a2d0c" category="cell">断开源卷和目标卷之间的关系、并激活目标卷以进行数据访问。当源卷由于数据损坏、意外删除或脱机状态等事件而无法提供数据时，通常会使用此选项。有关为数据访问配置目标卷以及重新激活源卷的信息，请参见<block ref="af502c2f8fb660944e2ad52aad1efcc3" category="inline-link-rx"></block>。</block>
   <block id="45ada1a8b02e7bf10200aedcf56d13c8" category="cell">重新同步</block>
   <block id="d41d8cd98f00b204e9800998ecf8427e" category="doc"></block>
   <block id="56f83d4dac34839a8f3a283bafd276e8" category="paragraph">重新建立卷之间断开的关系并根据定义的计划恢复数据复制。</block>
   <block id="f43fdb6878de7980d30d532ea44e0baf" category="admonition">重新同步卷时、目标卷上的内容将被源卷上的内容覆盖。</block>
-  <block id="5209b5da9877de39bd3385b8056be084" category="paragraph">要执行反向重新同步，以便将数据从目标卷重新同步到源卷，请参见<block ref="af502c2f8fb660944e2ad52aad1efcc3" category="inline-link-rx"></block>。</block>
   <block id="fb1729afce23e1bd1840f0ba32ef8e91" category="cell">反向重新同步</block>
   <block id="fdd14ac0ba0eae4cebe22311577994f3" category="cell">反转源卷和目标卷的角色。原始源卷中的内容将被目标卷的内容覆盖。当您要重新激活脱机的源卷时，这非常有用。在上次数据复制和源卷禁用之间写入到原始源卷的任何数据都不会保留。</block>
   <block id="67d85e3bd91876173776dc6f189ff7ac" category="cell">编辑计划</block>
@@ -92,7 +89,6 @@
   <block id="8e7eaac4ef6ddba0d9f93228ce3ac6e7" category="list-text">工作环境</block>
   <block id="4afa74830ae584f2b792dfe5b6c79ccc" category="list-text">如果您尚未创建，则需要在数据复制关系中为源和目标创建工作环境。</block>
   <block id="64c9a9d3cd7c3ca76cf19b78a96c9b79" category="inline-link">创建适用于 ONTAP 的 Amazon FSX 工作环境</block>
-  <block id="f903e0b8e0f1e5d10c61be1c83633ca0" category="list-text"><block ref="f903e0b8e0f1e5d10c61be1c83633ca0" category="inline-link-rx"></block></block>
   <block id="a3272fd5c4bd1903de9b1b2f5e1665a8" category="inline-link">在 AWS 中监控 Cloud Volumes ONTAP</block>
   <block id="5fc68dd6c2f9e8f9867008288922972c" category="list-text"><block ref="5fc68dd6c2f9e8f9867008288922972c" category="inline-link-rx"></block></block>
   <block id="70c84621a7336f391b4b7df86b5f1396" category="inline-link">在 Azure 中启动 Cloud Volumes ONTAP</block>
@@ -104,8 +100,6 @@
   <block id="a1ebf612d281c8e7fb16bbfa253b9627" category="inline-link">发现 ONTAP 集群</block>
   <block id="49aaf65c31a811a37b2627a951f6f6d2" category="list-text"><block ref="49aaf65c31a811a37b2627a951f6f6d2" category="inline-link-rx"></block></block>
   <block id="3fbe74eae84714fcfdd21edafe54f77f" category="list-text">版本要求</block>
-  <block id="9739187f50db857f27b204b12e6d365e" category="inline-link">数据保护高级指南</block>
-  <block id="45a002d1b0a2d3b7484b80cb82cbae5f" category="list-text">在复制数据之前，您应该验证源卷和目标卷是否运行兼容的 ONTAP 版本。有关详细信息，请参见<block ref="45ba42574012af0d87ad3af840143483" category="inline-link-rx"></block>。</block>
   <block id="fe6efbb95f9a85a506ca5269c7f8ff90" category="list-text">特定于 Cloud Volumes ONTAP 的要求</block>
   <block id="889d45df47a3ead91725048aa6da9442" category="list-text">实例的安全组必须包含所需的入站和出站规则：具体来说，是 ICMP 以及端口 11104 和 11105 的规则。</block>
   <block id="56a907169092bf547ac6f962beae2e1a" category="paragraph">这些规则包括在预定义的安全组中。</block>
@@ -115,8 +109,6 @@
   <block id="8c4a805dde66a7461e7760fe982d066f" category="list-text">必须安装活动 SnapMirror 许可证。</block>
   <block id="e133ed2609aff998f4ad7507f5e823eb" category="list-text">如果集群位于您的内部环境中，则您应从企业网络连接到 AWS ， Azure 或 GCP 中的虚拟网络。这通常是一个 VPN 连接。</block>
   <block id="1fbce003d68708feb24931b9e6366f50" category="list-text">ONTAP 集群必须满足其他子网、端口、防火墙和集群要求。</block>
-  <block id="88c6c83b92078bff672007a244edf6fe" category="inline-link">《集群和 SVM 对等快速指南》</block>
-  <block id="eee57d9d3eea15be2047876cf152e294" category="paragraph">有关详细信息，请参见<block ref="7a715a3c6763f11dce8d04ecae2e7135" category="inline-link-rx"></block>。</block>
   <block id="4f473a2a941d4fd7b4a68e3cd98e934c" category="list-text">Amazon FSX for ONTAP 的特定要求</block>
   <block id="e895824a462fdee602e050151c64f0a6" category="list-text">数据复制关系中的目标必须是适用于 ONTAP 的 Amazon FSX 工作环境。</block>
   <block id="7002d9ba5a8e7d19055405e260941870" category="paragraph">源可以是 Cloud Volumes ONTAP 或内部 ONTAP 集群。</block>
@@ -140,7 +132,6 @@
   <block id="43b69288e2e4056e2603dc7b20958252" category="inline-link-macro">了解复制策略</block>
   <block id="38ae0f8e71302f90ed2bd78cc3558be1" category="paragraph">如需帮助， <block ref="aa986145ecc84d384c81421dbd7256f8" category="inline-link-macro-rx"></block>。</block>
   <block id="94b8e29e9b4ae2edec5679fafc448461" category="inline-link-macro">了解备份策略的工作原理</block>
-  <block id="07c79d9eb85b0d23c55a7b9b67cf02d8" category="paragraph">如果选择自定义备份（ SnapVault ）策略、与策略关联的标签必须与源卷上 Snapshot 副本的标签匹配。有关详细信息 ... <block ref="75de9650bf9d481877dc0d18e86ffa75" category="inline-link-macro-rx"></block>。</block>
   <block id="d3b2b050bb9494cae757b48c9e54e869" category="list-text">* 计划 * ：选择一次性副本或重复计划。</block>
   <block id="eab21f14d3f6250b2de779be87b8404e" category="paragraph">有多个默认计划可用。如果您需要其他计划，则必须使用 System Manager 在 _destination_cluster 上创建一个新计划。</block>
   <block id="b651c9a4bed137033ce440a73927ffcf" category="list-text">* 查看 * ：查看您选择的内容并单击 * 执行 * 。</block>
@@ -191,4 +182,15 @@
   <block id="40f78d193b858589ad7df4dd4ce61ad6" category="inline-link">了解如何设置数据复制</block>
   <block id="1e56755e05ec049b30c49b9d53744ca1" category="paragraph"><block ref="0337e364432fca0f343e5f2660661b77" category="inline-link-rx"></block>。</block>
   <block id="afd129f297b503a0e765f8dcc6f0d4d4" category="paragraph"><block ref="afd129f297b503a0e765f8dcc6f0d4d4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f0cd8087559cf56fb0d34726dbd85d38" category="inline-link">了解如何在 ONTAP 文档中配置用于数据访问的目标卷以及如何重新激活源卷</block>
+  <block id="eded94fe54d9a9c86f0d510180c58a5d" category="cell">断开源卷和目标卷之间的关系、并激活目标卷以进行数据访问。当源卷由于数据损坏、意外删除或脱机状态等事件而无法提供数据时，通常会使用此选项。<block ref="7a7ac6ccb9be4e5f4f0b719a95b68333" category="inline-link-rx"></block></block>
+  <block id="eb75aeb3b4b2b9734ba3e52f5483f0b2" category="inline-link">ONTAP 文档</block>
+  <block id="e990be7a16b6b4357342c71daaf2bbca" category="paragraph">了解如何执行反向重新同步，以便将数据从目标卷重新同步到源卷，请转到<block ref="ab01f841914c89d9d9ffbe330b1e0c0f" category="inline-link-rx"></block>。</block>
+  <block id="6cd346b36825d1f1cef046571571fce0" category="list-text"><block ref="6cd346b36825d1f1cef046571571fce0" category="inline-link-rx"></block></block>
+  <block id="5ab11c0b1a095a5aa6623bf54430fb4b" category="list-text">在复制数据之前，您应该验证源卷和目标卷是否运行兼容的 ONTAP 版本。</block>
+  <block id="49a1e754247eba0034ec2a2b3dea46b0" category="inline-link">查看 SnapMirror 关系的兼容 ONTAP 版本</block>
+  <block id="b8c6e83fa255fcfab352a5b54339fdb8" category="paragraph"><block ref="b8c6e83fa255fcfab352a5b54339fdb8" category="inline-link-rx"></block></block>
+  <block id="d7bb556723e915c43fe4fd9b0f90d545" category="inline-link">在 ONTAP 文档中查看集群对等的前提条件</block>
+  <block id="54aa7fca826fcb0f6caefb80a82fe037" category="paragraph"><block ref="54aa7fca826fcb0f6caefb80a82fe037" category="inline-link-rx"></block></block>
+  <block id="d0c8bcc8105dd12af5250cd475e35814" category="paragraph">如果选择自定义备份（ SnapVault ）策略、与策略关联的标签必须与源卷上 Snapshot 副本的标签匹配。有关详细信息 ... <block ref="1da422ecee672d98d1632cce950d0eeb" category="inline-link-macro-rx"></block>。</block>
 </blocks>
