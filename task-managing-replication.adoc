@@ -6,6 +6,7 @@ summary: 在两个系统之间设置数据复制后、您可以从 Cloud Manager
 ---
 = 管理计划和关系
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

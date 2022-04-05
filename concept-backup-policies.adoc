@@ -6,6 +6,7 @@ summary: 与镜像策略不同，备份 SnapVault 策略会将特定的 Snapshot
 ---
 = 了解复制策略
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

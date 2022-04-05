@@ -6,6 +6,7 @@ summary: NetApp SnapMirror 可通过 LAN 或 WAN 高速复制数据，从而在�
 ---
 = 了解复制服务
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

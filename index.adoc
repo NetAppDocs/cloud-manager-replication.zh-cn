@@ -7,6 +7,7 @@ summary: 在 ONTAP 存储系统之间复制数据，以支持将数据备份和�
 ---
 = 复制文档
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
