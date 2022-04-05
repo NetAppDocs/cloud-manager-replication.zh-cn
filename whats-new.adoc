@@ -25,6 +25,8 @@ summary: 了解复制服务的新增功能。
 
 现在，您可以将数据从 Cloud Volumes ONTAP 系统或内部 ONTAP 集群复制到适用于 ONTAP 的 Amazon FSX 文件系统。
 
+https://docs.netapp.com/us-en/cloud-manager-replication/task-replicating-data.html["了解如何设置数据复制"]。
+
 
 
 == 2021 年 5 月 5 日
@@ -35,4 +37,4 @@ summary: 了解复制服务的新增功能。
 
 我们重新设计了 " 复制 " 选项卡，以便于使用，并与 Cloud Manager 用户界面的当前外观相匹配。
 
-image:replication.gif["Cloud Manager 中重新设计的复制选项卡的屏幕截图，其中显示了卷关系列表。"]
+image:https://raw.githubusercontent.com/NetAppDocs/cloud-manager-replication/main/media/replication.gif["Cloud Manager 中重新设计的复制选项卡的屏幕截图，其中显示了卷关系列表。"]

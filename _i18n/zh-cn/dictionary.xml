@@ -26,14 +26,12 @@
   <block id="ad8bcd8268bd244944d22d0323e8d319" category="paragraph"><block ref="ad8bcd8268bd244944d22d0323e8d319" category="inline-image-macro-rx" type="image"></block></block>
   <block id="95c3127441b4989e3d78b50920629c66" category="summary">了解复制服务的新增功能。</block>
   <block id="490414e0366b091220802d406e52c076" category="doc">新增功能</block>
-  <block id="3b7a1a77cdd08778e0827fbf312442b7" category="section-title">2021 年 9 月 2 日</block>
   <block id="6c88f9e17d9019e00177d64f9db55d2e" category="section-title">支持适用于 ONTAP 的 Amazon FSX</block>
   <block id="59dfc17500b1e0b8d1824eb8b1413080" category="paragraph">现在，您可以将数据从 Cloud Volumes ONTAP 系统或内部 ONTAP 集群复制到适用于 ONTAP 的 Amazon FSX 文件系统。</block>
   <block id="5057fdb214d9f3773bc386ba2aa1fcb0" category="section-title">2021 年 5 月 5 日</block>
   <block id="1473f0729c8bea54a5077a19ab764c47" category="section-title">界面经过重新设计</block>
   <block id="5a0a1bceb9fa4494f5bd231c6eb87a5b" category="paragraph">我们重新设计了 " 复制 " 选项卡，以便于使用，并与 Cloud Manager 用户界面的当前外观相匹配。</block>
   <block id="0f9405518138d20fd96d78fe19dabf84" category="inline-image-macro">Cloud Manager 中重新设计的复制选项卡的屏幕截图，其中显示了卷关系列表。</block>
-  <block id="ad0ba121971067cff2f6c3263f846473" category="paragraph"><block ref="ad0ba121971067cff2f6c3263f846473" category="inline-image-macro-rx" type="image"></block></block>
   <block id="958c15a697dc50afc44ab3fe2e061aec" category="summary">在两个系统之间设置数据复制后、您可以从 Cloud Manager 管理数据复制计划和关系。</block>
   <block id="2e4ca84ff13f65389599985c5d2a9f08" category="doc">管理计划和关系</block>
   <block id="f3a29486bed19a90f2da6d007818b427" category="list-title">步骤</block>
@@ -189,4 +187,8 @@
   <block id="dd490b81914dd945601e442a41cb4222" category="sidebar">NetApp 社区</block>
   <block id="ff6c37cbc252e306a6b4e390ec13cbc1" category="sidebar">Cloud Central 博客</block>
   <block id="ad203e818e0c9d7f42f1c260b33875f3" category="sidebar">云网络研讨会</block>
+  <block id="d798cbf5a08fbeb9fdd3652e5b00bb4c" category="section-title">2021 年 9 月 2 日</block>
+  <block id="40f78d193b858589ad7df4dd4ce61ad6" category="inline-link">了解如何设置数据复制</block>
+  <block id="1e56755e05ec049b30c49b9d53744ca1" category="paragraph"><block ref="0337e364432fca0f343e5f2660661b77" category="inline-link-rx"></block>。</block>
+  <block id="afd129f297b503a0e765f8dcc6f0d4d4" category="paragraph"><block ref="afd129f297b503a0e765f8dcc6f0d4d4" category="inline-image-macro-rx" type="image"></block></block>
 </blocks>
